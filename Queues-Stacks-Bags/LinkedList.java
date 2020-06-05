@@ -1,15 +1,5 @@
 public class LinkedList {
   private Node first; 
-  
-  private class Node {
-    String value;
-    Node next;
-
-    public Node(String value, Node next){
-      this.value = value;
-      this.next = next;
-    }
-  }
 
   public Node pop() {
     Node item = first;
@@ -40,7 +30,17 @@ public class LinkedList {
     list.push("0");
     list.printList();
     Node first = list.pop();
-    System.out.print("\n Poped num: " + first.value + "\n");
+    System.out.print("\nPoped num: " + first.value + "\n");
     list.printList();
   }
 }
+
+public class Node {
+    String value;
+    Node next;
+
+    public Node(String value, Node next){
+      this.value = value;
+      this.next = next;
+    }
+  }
