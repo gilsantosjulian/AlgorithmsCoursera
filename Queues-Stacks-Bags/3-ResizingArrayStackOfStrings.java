@@ -1,30 +1,26 @@
 public class LinkedList {
-  private String[] stack; 
+  private String[] stack = new String[1]; 
   private int N = 0;
-
-  public LinkedList(int capacity) {
-    stack = new String[capacity];
-  } 
 
   public String pop() {
     String item = stack[N--];
     stack[N] = null; // Allow to loitering waste space
+    if(N>0 && N == stack.length/4) resize(stack.length/2)
     return item;
   }
   
   public void push(String value) {
     stack[N++] = value;
     if(N == stack.length)
-      this.resize();
+      this.resize(stack.length * 2);
   }
 
-  public void resize() {
-    int newlength = stack.length * 2;
-    String[] newStack = new String[newlength];
+  public void resize(int capacity) {
+    String[] stackCopy = new String[capacity];
     for (int i = 0; i < stack.length; i++) {
-      newStack[i] = stack[i];
+    stackCopy[i] = stack[i];
     }
-    stack = newStack;
+    stack =stackCopy;
   }
 
   public void printList() {
@@ -38,7 +34,7 @@ public class LinkedList {
   }
 
   public static void main (String[] args) {
-    LinkedList list = new LinkedList(3);
+    LinkedList list = new LinkedList();
     list.push("4");
     list.push("5");
     list.push("1");
