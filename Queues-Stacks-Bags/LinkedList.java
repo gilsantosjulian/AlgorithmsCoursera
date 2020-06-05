@@ -22,6 +22,10 @@ public class LinkedList {
     }
   }
 
+  public boolean isEmpty() {
+    return first == null;
+  }
+
   public static void main (String[] args) {
     LinkedList list = new LinkedList();
     list.push("4");
@@ -31,6 +35,12 @@ public class LinkedList {
     list.printList();
     Node first = list.pop();
     System.out.print("\nPoped num: " + first.value + "\n");
+    list.printList();
+    list.pop();
+    list.pop();
+    System.out.print("\nisEmpty: " + list.isEmpty() + "\n");
+    list.pop();
+    System.out.print("\nisEmpty: " + list.isEmpty() + "\n");
     list.printList();
   }
 }
