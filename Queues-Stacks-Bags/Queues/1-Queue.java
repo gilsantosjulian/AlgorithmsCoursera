@@ -1,5 +1,6 @@
 public class Queue {
   private Node first; 
+  private Node last; 
 
   public Node dequeue() {
     Node item = first;
@@ -9,16 +10,11 @@ public class Queue {
   
   public void enqueue(String value) {
     Node newNode = new Node(value, null);
-    Node node = first;
-    if(first == null) {
-      first = newNode;
-      return;
-    }
-
-    while(node.next != null) {
-      node = node.next;
-    }
-    node.next = newNode;
+    Node temp = last;
+    last = newNode;
+    
+    if(isEmpty()) first = last;
+    else temp.next = newNode;
   }
 
   public void printQueue() {
@@ -45,11 +41,15 @@ public class Queue {
     Node first = queue.dequeue();
     System.out.print("\ndequeueed num: " + first.value + "\n");
     queue.printQueue();
-    queue.dequeue();
+    Node second = queue.dequeue();
+    System.out.print("\ndequeueed num: " + second.value + "\n");
+    queue.printQueue();
     queue.dequeue();
     System.out.print("\nisEmpty: " + queue.isEmpty() + "\n");
     queue.dequeue();
+    queue.printQueue();
     queue.dequeue();
+    queue.printQueue();
     System.out.print("\nisEmpty: " + queue.isEmpty() + "\n");
     queue.printQueue();
   }
