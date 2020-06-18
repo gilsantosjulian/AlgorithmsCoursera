@@ -9,9 +9,9 @@ public class SelectionSort {
 
   public void sort() {
     int N = array.length;
-    for(int i=0; i<N; i++) {
+    for(int i = 0; i < N; i++) {
       int min = i;
-      for(int j=i+1; j<N; j++)
+      for(int j = i+1; j < N; j++)
         if(less(array[j], array[min])) 
           min = j;
       exch(i, min);
@@ -27,18 +27,20 @@ public class SelectionSort {
   }
   
   public void exch(int index, int min) {
-    array[index] = min;
+    int temp = array[index];
+    array[index] = array[min];
+    array[min] = temp;
   }
 
   public Boolean isSorted() {
-    for(int i=0; i<N; i++)
+    for(int i = 0; i < N-1; i++)
       if(array[i] > array[i+1]) 
         return false;
     return true;
   }
 
   public void print() {
-    for (int i = 0; i < array.length; i++) {
+    for (int i = 0; i < N; i++) {
       System.out.print(array[i] + "-");
     }
     System.out.print("\n");
@@ -58,9 +60,9 @@ public class SelectionSort {
     arr.push(1);
     arr.push(5);
     arr.print();
-
     arr.sort();
     arr.print();
 
+    System.out.print("\n" + arr.isSorted());
   }
 }
