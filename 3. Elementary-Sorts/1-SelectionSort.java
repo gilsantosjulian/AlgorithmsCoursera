@@ -34,7 +34,7 @@ public class SelectionSort {
 
   public Boolean isSorted() {
     for(int i = 0; i < N-1; i++)
-      if(array[i] > array[i+1]) 
+      if(less(array[i+1], array[i])) 
         return false;
     return true;
   }
